@@ -69,18 +69,17 @@ header{
     left: 0;
     z-index: 1000;
     border-bottom: 1px solid transparent;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 10%;
+    padding: 20px 2%;
 }
 
 header.sticky{
     background: var(--bg-color);
     border-bottom: 1px solid var(--secon-bg-color);
-    padding: 12px 10%;
+    padding: 12px 2%;
 }
 
 .logo{
@@ -359,21 +358,31 @@ section{
 /* About Section Css */
 .about {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     grid-gap: 2em;
     background: var(--secon-bg-color);
-    flex-wrap: wrap; /* Add this to allow wrapping on small screens */
+    flex-wrap: nowrap; /* No wrap on desktop */
+    padding: 100px 2%;
 }
 
 .about .img-about {
     text-align: center;
     position: relative;
+    flex: 1; /* Take up equal space */
+    order: 1; /* Place on left side */
+}
+
+.about-content {
+    flex: 1; /* Take up equal space */
+    order: 2; /* Place on right side */
+    padding-left: 2rem;
 }
 
 .about .img-about img {
     max-width: 400px;
     height: auto;
+    display: block;
 }
 
 .about-content span {
@@ -1034,11 +1043,20 @@ footer a i{
     }
 
     .about {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
+    .about-content {
+        order: 1; /* Content first on mobile */
+        padding-left: 0;
+        width: 100%;
+        text-align: left;
+    }
+    
     .about .img-about {
-        display: none;
+        order: 2; /* Image second on mobile */
+        display: none; /* Hide on mobile as per original design */
     }
 
     .skill-main {
